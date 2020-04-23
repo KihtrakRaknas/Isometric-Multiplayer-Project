@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class NetworkManager : MonoBehaviour
+public class NetworkManager : MonoBehaviourPunCallbacks
 {
     public static NetworkManager instance;
     private void Awake()
@@ -20,6 +20,7 @@ public class NetworkManager : MonoBehaviour
     void Start()
     {
         PhotonNetwork.ConnectUsingSettings();
+        //PhotonNetwork.JoinLobby();
     }
 
     public void CreateRoom(string roomName)
@@ -35,5 +36,16 @@ public class NetworkManager : MonoBehaviour
     public void ChangedScene (string sceneName)
     {
         PhotonNetwork.LoadLevel(sceneName);
+    }
+
+
+    void OnJoinRoomFailed()
+    {
+        print("room join failed");
+    }
+
+    void OnJoinedRoom()
+    {
+        print("room joined");
     }
 }
