@@ -30,6 +30,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void JoinRoom(string roomName)
     {
+        print("join room called");
         PhotonNetwork.JoinRoom(roomName);
     }
 
@@ -39,12 +40,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
 
-    void OnJoinRoomFailed()
+    public void OnJoinRoomFailed()
     {
         print("room join failed");
     }
 
-    void OnJoinedRoom()
+    public override void OnJoinedRoom()
     {
         print("room joined");
     }
