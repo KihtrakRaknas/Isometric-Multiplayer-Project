@@ -68,6 +68,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         print("room joined");
+        ChangedScene();
     }
 
 }
