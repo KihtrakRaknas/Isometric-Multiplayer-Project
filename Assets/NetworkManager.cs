@@ -10,7 +10,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public Button JoinBtn;
     public static NetworkManager instance;
 
-    /*    private void Awake()
+    private void Awake()
             {
                 if (instance != null && instance != this)
                     this.gameObject.SetActive(false);
@@ -19,11 +19,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
                     instance = this;
                     DontDestroyOnLoad(this.gameObject);
                 }
-            }*/
+            }
     // Start is called before the first frame update
     void OnClick_CreateRoom()
     {
-
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
         PhotonNetwork.JoinOrCreateRoom("basic", options, TypedLobby.Default);
@@ -34,15 +33,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Button btn = JoinBtn.GetComponent<Button>();
         btn.onClick.AddListener(OnClick_CreateRoom);
         print("Connecting to server");
+        PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.NickName = "Player" + Random.Range(0, 999).ToString();
         PhotonNetwork.GameVersion = "0.0.1";
         PhotonNetwork.ConnectUsingSettings();
-        //PhotonNetwork.JoinLobby();
+        
     }
     public override void OnConnectedToMaster()
     {
         print("Connected to server");
         print(PhotonNetwork.LocalPlayer.NickName);
+        PhotonNetwork.JoinLobby();
     }
     public void CreateRoom(string roomName)
     {
@@ -59,12 +60,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
 
-    void OnJoinRoomFailed()
+    public void OnJoinRoomFailed()
     {
         print("room join failed");
     }
 
-    void OnJoinedRoom()
+    public override void OnJoinedRoom()
     {
         print("room joined");
     }
