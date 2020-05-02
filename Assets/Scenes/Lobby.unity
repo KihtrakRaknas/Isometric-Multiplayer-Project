@@ -148,7 +148,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64177246}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e8ef849403706b644a1704613d220729, type: 3}
   m_Name: 
@@ -383,7 +383,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Create Room
+  m_Text: Create / Join Room
 --- !u!222 &294716973
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -858,7 +858,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: Room #
 --- !u!222 &434011420
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1023,7 +1023,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Enter text...
+  m_Text: Enter room code...
 --- !u!222 &858081372
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1795,3 +1795,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2130622400}
   m_CullTransparentMesh: 0
+--- !u!1001 &1697778060773782356
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1697778060091527316, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: JoinBtn
+      value: 
+      objectReference: {fileID: 1928596836}
+    - target: {fileID: 1697778060091527316, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: Username_field
+      value: 
+      objectReference: {fileID: 331759844}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 588.5781
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 348.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -276.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527317, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1697778060091527403, guid: e35635a5c2b7ed64381f7514fd225e46,
+        type: 3}
+      propertyPath: m_Name
+      value: NetworkManager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e35635a5c2b7ed64381f7514fd225e46, type: 3}

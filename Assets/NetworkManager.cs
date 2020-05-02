@@ -4,28 +4,37 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Realtime;
 using Photon.Pun;
+using UnityEngine.SceneManagement;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+    
     public Button JoinBtn;
     public static NetworkManager instance;
-
+    public Text Username_field;
     private void Awake()
-            {
-                if (instance != null && instance != this)
-                    this.gameObject.SetActive(false);
-                else
-                {
-                    instance = this;
-                    DontDestroyOnLoad(this.gameObject);
-                }
-            }
+    {
+        if (instance != null && instance != this)
+            this.gameObject.SetActive(false);
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(this.gameObject);
+        }
+    }
     // Start is called before the first frame update
     void OnClick_CreateRoom()
     {
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
-        PhotonNetwork.JoinOrCreateRoom("basic", options, TypedLobby.Default);
+        string roomID = Username_field.text.ToString() != "" ? Username_field.text.ToString() : "basic";
+        print(roomID);
+        PhotonNetwork.JoinOrCreateRoom(roomID, options, TypedLobby.Default);
+    }
+
+    public void instantiatePlayer(string name)
+    {
+        PhotonNetwork.Instantiate(name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
     }
 
     void Start()
@@ -37,7 +46,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.NickName = "Player" + Random.Range(0, 999).ToString();
         PhotonNetwork.GameVersion = "0.0.1";
         PhotonNetwork.ConnectUsingSettings();
-        
+
     }
     public override void OnConnectedToMaster()
     {
@@ -68,7 +77,23 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         print("room joined");
-        ChangedScene();
+        if (PhotonNetwork.IsMasterClient)
+            ChangedScene("Game");
+    }
+
+    public override void OnLeftRoom()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+    }
+
+    public override void OnPlayerEnteredRoom(Player other)
+    {
+        Debug.LogFormat("OnPlayerEnteredRoom() {0}", other.NickName);
     }
 
 }
