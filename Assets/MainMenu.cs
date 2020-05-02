@@ -11,8 +11,8 @@ public class MainMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = JoinBtn.GetComponent<Button>();
-        btn.onClick.AddListener(JoinRoom);
+        //Button btn = JoinBtn.GetComponent<Button>();
+        //btn.onClick.AddListener(JoinRoom);
     }
 
     // Update is called once per frame
@@ -23,8 +23,8 @@ public class MainMenu : MonoBehaviour
 
     void JoinRoom()
     {
-        string roomID = Username_field.text.ToString();
-        print(roomID);
-        NetworkManager.instance.JoinRoom(roomID);
+        //string roomID = Username_field.text.ToString();
+        //print(roomID);
+        //NetworkManager.instance.JoinRoom(roomID);
     }
 }

@@ -7,6 +7,7 @@ using Photon.Pun;
 
 public class NetworkManager : MonoBehaviourPunCallbacks
 {
+    public Button JoinBtn;
     public static NetworkManager instance;
 
     /*    private void Awake()
@@ -30,8 +31,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     void Start()
     {
+        Button btn = JoinBtn.GetComponent<Button>();
+        btn.onClick.AddListener(OnClick_CreateRoom);
         print("Connecting to server");
-        PhotonNetwork.NickName = "Hey" + Random.Range(0, 999).ToString();
+        PhotonNetwork.NickName = "Player" + Random.Range(0, 999).ToString();
         PhotonNetwork.GameVersion = "0.0.1";
         PhotonNetwork.ConnectUsingSettings();
         //PhotonNetwork.JoinLobby();
