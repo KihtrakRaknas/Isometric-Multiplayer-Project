@@ -25,11 +25,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void OnClick_CreateRoom()
     {
+
+        string roomID = Username_field.text.ToString() != "" ? Username_field.text.ToString() : "forgotToTypeARoomCode";
+        makeRoomWithID(roomID);
+    }
+
+    public void makeRoomWithID(string id)
+    {
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
-        string roomID = Username_field.text.ToString() != "" ? Username_field.text.ToString() : "basic";
-        print(roomID);
-        PhotonNetwork.JoinOrCreateRoom(roomID, options, TypedLobby.Default);
+        print(id);
+        PhotonNetwork.JoinOrCreateRoom(id, options, TypedLobby.Default);
     }
 
     public void instantiatePlayer(string name)

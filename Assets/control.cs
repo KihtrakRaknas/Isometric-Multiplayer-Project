@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class control : MonoBehaviour
 {
+    float xscale = 0;
+    float zscale = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -12,23 +14,43 @@ public class control : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if(Input.GetKey("down")){
-
+    {      
+        if (Input.GetKey("down")){
+            xscale += -1;
         }
         else if (Input.GetKey("up"))
         {
-
+            xscale += 1;
         }
-        else if (Input.GetKey("left"))
+        else
+        {
+            xscale /= 1.02f;
+        }
+        if (Input.GetKey("left"))
         {
             print("left");
-            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z-1*Time.deltaTime);
+            zscale += 1;
         }
         else if (Input.GetKey("right"))
         {
             print("right");
-            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z + 1 * Time.deltaTime);
+            zscale += -1;
         }
+        else
+        {
+            zscale /= 1.02f;
+        }
+
+        if (Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl))
+        {
+            if(Mathf.Abs(this.GetComponent<Rigidbody>().velocity.y) < 0.001)
+                this.GetComponent<Rigidbody>().velocity = new Vector3(0, 10, 0);
+        }
+        var x = this.transform.position.x;
+        var y = this.transform.position.y;
+        var z = this.transform.position.z;
+        x += xscale * Time.deltaTime/10;
+        z += zscale * Time.deltaTime / 10;
+        this.transform.position = new Vector3(x, y, z);
     }
 }
