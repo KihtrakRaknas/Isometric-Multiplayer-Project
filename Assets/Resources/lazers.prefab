@@ -138,6 +138,7 @@ GameObject:
   - component: {fileID: 8554609032034441300}
   - component: {fileID: 5437639128166779124}
   - component: {fileID: 7596434203145628217}
+  - component: {fileID: -3421151377119918699}
   m_Layer: 0
   m_Name: lazers
   m_TagString: Untagged
@@ -209,6 +210,22 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 1
+--- !u!54 &-3421151377119918699
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219095350866936687}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &8147159456023656201
 GameObject:
   m_ObjectHideFlags: 0
