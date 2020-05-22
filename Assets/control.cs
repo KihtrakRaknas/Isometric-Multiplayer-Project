@@ -7,16 +7,24 @@ public class control : MonoBehaviour
     public GameObject projectile;
     float xscale = 0;
     float zscale = 0;
+    bool canShoot = true;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
+    void resetShootBool()
+    {
+        canShoot = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey("space")) {
+        if (canShoot && Input.GetKey("space")) {
+            canShoot = false;
+            Invoke("resetShootBool", .2f);
             print("space");
             NetworkManager.instance.spawnBullet(this.transform.position, transform.rotation);
             //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 10);
