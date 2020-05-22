@@ -23,6 +23,7 @@ public class control : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        float movementSpeed = 2;
         if (canShoot && Input.GetKey("space"))
         {
             canShoot = false;
@@ -33,29 +34,29 @@ public class control : MonoBehaviour
         }
         if (Input.GetKey("down"))
         {
-            xscale += -1;
+            xscale += -movementSpeed;
         }
         else if (Input.GetKey("up"))
         {
-            xscale += 1;
+            xscale += movementSpeed;
         }
         else
         {
-            xscale /= 1.02f;
+            xscale /= 1.02f*movementSpeed;
         }
         if (Input.GetKey("left"))
         {
             print("left");
-            zscale += 1;
+            zscale += movementSpeed;
         }
         else if (Input.GetKey("right"))
         {
             print("right");
-            zscale += -1;
+            zscale += -movementSpeed;
         }
         else
         {
-            zscale /= 1.02f;
+            zscale /= 1.02f* movementSpeed;
         }
         if (Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl))
         {
@@ -76,6 +77,13 @@ public class control : MonoBehaviour
             Vector3 movement = new Vector3(xscale, 0.0f, zscale);
             if (movement != Vector3.zero)
                 transform.rotation = Quaternion.LookRotation(movement);
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "bullet")
+        {
+            Destroy(this.gameObject);
         }
     }
 }
