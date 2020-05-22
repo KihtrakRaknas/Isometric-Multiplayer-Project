@@ -76,4 +76,12 @@ public class control : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(movement);
         }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "bullet")
+        {
+            Destroy(this.gameObject);
+        }
+    }
 }

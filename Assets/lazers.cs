@@ -7,7 +7,7 @@ public class lazers : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Invoke("kill",10);
+        Invoke("kill", 10);
     }
     void kill()
     {
@@ -18,5 +18,9 @@ public class lazers : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * Time.deltaTime * 20;
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        Invoke("kill", .1f);
     }
 }
