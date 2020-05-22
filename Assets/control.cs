@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class control : MonoBehaviour
 {
-    public Rigidbody projectile;
+    public GameObject projectile;
     float xscale = 0;
     float zscale = 0;
     // Start is called before the first frame update
@@ -17,11 +17,10 @@ public class control : MonoBehaviour
     void Update()
     {
         if (Input.GetKey("space")) {
-            Rigidbody clone;
-            clone = Instantiate(projectile, transform.position, transform.rotation);
-            clone.velocity = transform.TransformDirection(Vector3.forward * 10);
+            NetworkManager.instance.spawnBullet(this.transform.position);
+            //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 10);
         }
-        else if (Input.GetKey("down")) {
+        if (Input.GetKey("down")) {
             xscale += -1;
         }
         else if (Input.GetKey("up"))
