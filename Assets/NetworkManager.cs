@@ -40,7 +40,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void instantiatePlayer(string name)
     {
-        PhotonNetwork.Instantiate(name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+        GameObject main = PhotonNetwork.Instantiate(name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+        main.GetComponent<control>().isMain = true;
     }
 
     public void spawnBullet(Vector3 pos, Quaternion rotaton)

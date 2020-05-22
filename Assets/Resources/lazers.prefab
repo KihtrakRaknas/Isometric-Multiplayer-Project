@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 8554609032034441300}
   - component: {fileID: 5437639128166779124}
   - component: {fileID: 7596434203145628217}
-  - component: {fileID: -3421151377119918699}
+  - component: {fileID: 4115774397891757065}
   m_Layer: 0
   m_Name: lazers
   m_TagString: Untagged
