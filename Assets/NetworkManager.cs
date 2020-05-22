@@ -43,9 +43,9 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         PhotonNetwork.Instantiate(name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
     }
 
-    public void spawnBullet(Vector3 pos)
+    public void spawnBullet(Vector3 pos, Quaternion rotaton)
     {
-        PhotonNetwork.Instantiate("lazers", pos, Quaternion.identity, 0);
+        PhotonNetwork.Instantiate("lazers", pos, rotaton, 0);
     }
 
     void Start()
