@@ -9,6 +9,7 @@ public class control : MonoBehaviour
     float zscale = 0;
     bool canShoot = true;
     public bool isMain = false;
+    bool multiplayerHasStarted = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +24,8 @@ public class control : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        float movementSpeed = 2;
+        float movementSpeed = 5;
+        float speedDecrease = 1.05f;
         if (canShoot && Input.GetKey("space"))
         {
             canShoot = false;
@@ -42,7 +44,7 @@ public class control : MonoBehaviour
         }
         else
         {
-            xscale /= 1.02f*movementSpeed;
+            xscale /= speedDecrease;
         }
         if (Input.GetKey("left"))
         {
@@ -56,7 +58,7 @@ public class control : MonoBehaviour
         }
         else
         {
-            zscale /= 1.02f* movementSpeed;
+            zscale /= speedDecrease;
         }
         if (Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl))
         {
@@ -66,6 +68,15 @@ public class control : MonoBehaviour
     }
     void Update()
     {
+        if(multiplayerHasStarted && GameObject.FindGameObjectsWithTag("playerObj").Length == 1)
+        {
+            NetworkManager.instance.changeRoom();
+        }
+        else
+        {
+            multiplayerHasStarted = true;
+        }
+
         if (isMain)
         {
             var x = this.transform.position.x;
@@ -83,7 +94,13 @@ public class control : MonoBehaviour
     {
         if (collision.gameObject.tag == "bullet")
         {
-            Destroy(this.gameObject);
+            isMain = false;
+            Invoke("kill", 3);
+            transform.Rotate(new Vector3(90, 0, 0));
         }
+    }
+    void kill()
+    {
+        Destroy(this.gameObject);
     }
 }
