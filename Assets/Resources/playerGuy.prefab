@@ -1150,6 +1150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectile: {fileID: 0}
+  isMain: 0
 --- !u!54 &8430406537268513389
 Rigidbody:
   m_ObjectHideFlags: 0
