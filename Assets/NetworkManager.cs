@@ -40,7 +40,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void instantiatePlayer(string name)
     {
-        GameObject main = PhotonNetwork.Instantiate(name, new Vector3(0f, 5f, 0f), Quaternion.identity, 0);
+        GameObject main = PhotonNetwork.Instantiate(name, new Vector3(Random.Range(-20,20), 20f, Random.Range(-20, 20)), Quaternion.identity, 0);
         main.GetComponent<control>().isMain = true;
     }
 
@@ -55,8 +55,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         btn.onClick.AddListener(OnClick_CreateRoom);
         print("Connecting to server");
         PhotonNetwork.AutomaticallySyncScene = true;
-        PhotonNetwork.NickName = "Player" + Random.Range(0, 999).ToString();
-        PhotonNetwork.GameVersion = "0.0.1";
+        PhotonNetwork.NickName = "Player" + Random.Range(0, 999999).ToString();
+        PhotonNetwork.GameVersion = "0.1.0";
         PhotonNetwork.ConnectUsingSettings();
 
     }
@@ -89,8 +89,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public override void OnJoinedRoom()
     {
         print("room joined");
+        changeRoom();
+    }
+
+    public void changeRoom()
+    {
         if (PhotonNetwork.IsMasterClient)
-            ChangedScene("Game");
+            ChangedScene("Game" + (Mathf.Floor(Random.Range(1, 3)+1)));
     }
 
     public override void OnLeftRoom()
