@@ -11,7 +11,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     
     public Button JoinBtn;
     public static NetworkManager instance;
-    public Text Username_field;
+    public Text Username_field; // actually room code
+    public Text real_username_field;
     private void Awake()
     {
         if (instance != null && instance != this)
@@ -25,7 +26,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void OnClick_CreateRoom()
     {
-
+        PhotonNetwork.NickName = real_username_field.text != "" ? real_username_field.text : "Player" + Random.Range(0, 999999).ToString();
         string roomID = Username_field.text.ToString() != "" ? Username_field.text.ToString() : "forgotToTypeARoomCode";
         makeRoomWithID(roomID);
     }
@@ -55,7 +56,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         btn.onClick.AddListener(OnClick_CreateRoom);
         print("Connecting to server");
         PhotonNetwork.AutomaticallySyncScene = true;
-        PhotonNetwork.NickName = "Player" + Random.Range(0, 999999).ToString();
+        PhotonNetwork.NickName = real_username_field.text!=""? real_username_field.text:"Player" + Random.Range(0, 999999).ToString();
         PhotonNetwork.GameVersion = "0.1.0";
         PhotonNetwork.ConnectUsingSettings();
 
