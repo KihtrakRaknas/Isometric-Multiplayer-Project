@@ -24,6 +24,8 @@ public class control : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        if (transform.position.y < -100)
+            kill();
         if (isMain)
         {
             float movementSpeed = 5;
