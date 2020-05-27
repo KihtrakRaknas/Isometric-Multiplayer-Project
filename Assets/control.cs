@@ -25,7 +25,10 @@ public class control : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        text.transform.LookAt(Camera.main.transform);
+        Vector3 v = Camera.main.transform.position - transform.position;
+        v.x = v.z = 0.0f;
+        text.transform.LookAt(Camera.main.transform.position - v);
+        text.transform.Rotate(0, 180, 0);
         text.GetComponent<TextMesh>().text = username;
         if (transform.position.y < -100)
             kill();
