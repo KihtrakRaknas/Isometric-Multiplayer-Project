@@ -74,7 +74,8 @@ public class control : MonoBehaviour
         }
         else
         {
-            multiplayerHasStarted = true;
+            if(GameObject.FindGameObjectsWithTag("playerObj").Length != 1)
+                multiplayerHasStarted = true;
         }
 
         if (isMain)

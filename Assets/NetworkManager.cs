@@ -94,8 +94,10 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void changeRoom()
     {
-        if (PhotonNetwork.IsMasterClient)
-            ChangedScene("Game" + (Mathf.Floor(Random.Range(0, 4)+1)));
+        if (PhotonNetwork.IsMasterClient) {
+            print("MASTER");
+            ChangedScene("Game" + (Mathf.Floor(Random.Range(0, 4) + 1)));
+        }
     }
 
     public override void OnLeftRoom()
