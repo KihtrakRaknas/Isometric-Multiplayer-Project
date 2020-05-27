@@ -24,46 +24,49 @@ public class control : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
-        float movementSpeed = 5;
-        float speedDecrease = 1.05f;
-        if (canShoot && Input.GetKey("space"))
+        if (isMain)
         {
-            canShoot = false;
-            Invoke("resetShootBool", .2f);
-            print("space");
-            NetworkManager.instance.spawnBullet(this.transform.position, transform.rotation);
-            //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 10);
-        }
-        if (Input.GetKey("down"))
-        {
-            xscale += -movementSpeed;
-        }
-        else if (Input.GetKey("up"))
-        {
-            xscale += movementSpeed;
-        }
-        else
-        {
-            xscale /= speedDecrease;
-        }
-        if (Input.GetKey("left"))
-        {
-            print("left");
-            zscale += movementSpeed;
-        }
-        else if (Input.GetKey("right"))
-        {
-            print("right");
-            zscale += -movementSpeed;
-        }
-        else
-        {
-            zscale /= speedDecrease;
-        }
-        if (Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl))
-        {
-            if (Mathf.Abs(this.GetComponent<Rigidbody>().velocity.y) < 0.001)
-                this.GetComponent<Rigidbody>().velocity = new Vector3(0, 10, 0);
+            float movementSpeed = 5;
+            float speedDecrease = 1.05f;
+            if (canShoot && Input.GetKey("space"))
+            {
+                canShoot = false;
+                Invoke("resetShootBool", .2f);
+                print("space");
+                NetworkManager.instance.spawnBullet(this.transform.position, transform.rotation);
+                //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 10);
+            }
+            if (Input.GetKey("down"))
+            {
+                xscale += -movementSpeed;
+            }
+            else if (Input.GetKey("up"))
+            {
+                xscale += movementSpeed;
+            }
+            else
+            {
+                xscale /= speedDecrease;
+            }
+            if (Input.GetKey("left"))
+            {
+                print("left");
+                zscale += movementSpeed;
+            }
+            else if (Input.GetKey("right"))
+            {
+                print("right");
+                zscale += -movementSpeed;
+            }
+            else
+            {
+                zscale /= speedDecrease;
+            }
+            if (Input.GetKey(KeyCode.RightControl) || Input.GetKey(KeyCode.LeftControl))
+            {
+                if (Mathf.Abs(this.GetComponent<Rigidbody>().velocity.y) < 0.001)
+                    this.GetComponent<Rigidbody>().velocity = new Vector3(0, 10, 0);
+            }
         }
     }
     void Update()
@@ -71,6 +74,7 @@ public class control : MonoBehaviour
         if(multiplayerHasStarted && GameObject.FindGameObjectsWithTag("playerObj").Length == 1)
         {
             NetworkManager.instance.changeRoom();
+            multiplayerHasStarted = false;
         }
         else
         {
