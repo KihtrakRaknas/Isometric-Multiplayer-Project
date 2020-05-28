@@ -1172,6 +1172,7 @@ GameObject:
   - component: {fileID: 5462491644388240181}
   - component: {fileID: 8430406537268513389}
   - component: {fileID: 884140863289344554}
+  - component: {fileID: 8611861168382997121}
   m_Layer: 0
   m_Name: playerGuy
   m_TagString: playerObj
@@ -1228,6 +1229,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 8760498848551333115}
+  - {fileID: 8611861168382997121}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1275,3 +1277,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0513263, y: 3.4178364, z: 0.6071477}
   m_Center: {x: -0.0034931898, y: 0.9524454, z: 0.011534274}
+--- !u!114 &8611861168382997121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8760498848551333114}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 1
+  m_TeleportEnabled: 1
+  m_TeleportIfDistanceGreaterThan: 1

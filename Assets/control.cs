@@ -93,6 +93,7 @@ public class control : MonoBehaviourPun
             winner = GameObject.FindGameObjectsWithTag("playerObj")[0].GetComponent<PhotonView>().Owner.NickName;
             if (isMain)
                 winner = "you";
+            print(winner);
             multiplayerHasStarted = false;
         }
         else
