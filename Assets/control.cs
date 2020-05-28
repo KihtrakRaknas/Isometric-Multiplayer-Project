@@ -116,7 +116,7 @@ public class control : MonoBehaviourPun
             Vector3 vex = (forward * xscale + right * zscale) * Time.deltaTime / 10;
                 print(vex);
             transform.position+=vex;
-            Vector3 movement = new Vector3(xscale, 0.0f, zscale);
+            Vector3 movement = new Vector3(vex.x, 0.0f, vex.z);
             if (movement != Vector3.zero)
                 transform.rotation = Quaternion.LookRotation(movement);
         }

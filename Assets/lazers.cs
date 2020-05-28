@@ -17,7 +17,7 @@ public class lazers : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime * 20;
+        transform.position += transform.forward * Time.deltaTime * 50;
     }
     void OnCollisionEnter(Collision collision)
     {
