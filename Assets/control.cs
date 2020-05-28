@@ -1,8 +1,9 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class control : MonoBehaviour
+public class control : MonoBehaviourPun
 {
     public GameObject text;
     float xscale = 0;
@@ -14,7 +15,7 @@ public class control : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        username = GetComponent<PhotonView>().Owner.NickName;
     }
 
     void resetShootBool()
