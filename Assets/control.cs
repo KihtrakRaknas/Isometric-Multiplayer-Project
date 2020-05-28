@@ -126,6 +126,7 @@ public class control : MonoBehaviourPun
     }
     void kill()
     {
+        PhotonNetwork.Destroy(this.gameObject);
         Destroy(this.gameObject);
     }
 }
