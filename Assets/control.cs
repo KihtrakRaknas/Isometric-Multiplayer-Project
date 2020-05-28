@@ -84,7 +84,7 @@ public class control : MonoBehaviourPun
             NetworkManager.instance.changeRoom();
             winner = GameObject.FindGameObjectsWithTag("playerObj")[0].GetComponent<PhotonView>().Owner.NickName;
             if (isMain)
-                winner = "you";
+                winner = "You";
             print(winner);
             displayWinner.winner = winner;
             multiplayerHasStarted = false;

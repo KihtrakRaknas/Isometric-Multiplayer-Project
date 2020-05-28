@@ -13,15 +13,21 @@ public class displayWinner : MonoBehaviourPun
     public Text winText;
     public bool isMain;
     public static string winner = "";
+    int counter = 0;
     void Start()
     {
         isMain = GetComponent<control>().isMain;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (winner != "")
+        {
             winText.text = winner + " won!";
+            counter++;
+            if (counter > 100)
+                winner = "";
+        }
     }
 }
