@@ -104,9 +104,18 @@ public class control : MonoBehaviourPun
 
         if (isMain)
         {
+            var camera = Camera.main;
 
-            transform.Translate(new Vector3(xscale * Time.deltaTime / 10, 0, zscale * Time.deltaTime / 10);
-            this.transform.position = new Vector3(x, y, z);
+            var forward = camera.transform.forward;
+            var right = -1 * camera.transform.right;
+
+            forward.y = 0f;
+            right.y = 0f;
+            forward.Normalize();
+            right.Normalize();
+            Vector3 vex = (forward * xscale + right * zscale) * Time.deltaTime / 10;
+                print(vex);
+            transform.position+=vex;
             Vector3 movement = new Vector3(xscale, 0.0f, zscale);
             if (movement != Vector3.zero)
                 transform.rotation = Quaternion.LookRotation(movement);
