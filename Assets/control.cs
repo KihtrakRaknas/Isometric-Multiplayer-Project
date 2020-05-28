@@ -48,7 +48,6 @@ public class control : MonoBehaviourPun
             {
                 canShoot = false;
                 Invoke("resetShootBool", .2f);
-                print("space");
                 NetworkManager.instance.spawnBullet(this.transform.position, transform.rotation);
                 //clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * 10);
             }
@@ -66,12 +65,10 @@ public class control : MonoBehaviourPun
             }
             if (Input.GetKey("left"))
             {
-                print("left");
                 zscale += movementSpeed;
             }
             else if (Input.GetKey("right"))
             {
-                print("right");
                 zscale += -movementSpeed;
             }
             else
@@ -114,7 +111,6 @@ public class control : MonoBehaviourPun
             forward.Normalize();
             right.Normalize();
             Vector3 vex = (forward * xscale + right * zscale) * Time.deltaTime / 10;
-                print(vex);
             transform.position+=vex;
             Vector3 movement = new Vector3(vex.x, 0.0f, vex.z);
             if (movement != Vector3.zero)
