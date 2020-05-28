@@ -23,12 +23,6 @@ public class control : MonoBehaviourPun
     {
         canShoot = true;
     }
-    void OnGUI()
-    {
-        if(winner!="")
-            GUI.Label(new Rect(Screen.height - 10, Screen.width - 40, 20, 80), winner + " wins!");
-
-    }
         // Update is called once per frame
         private void FixedUpdate()
     {
@@ -91,6 +85,7 @@ public class control : MonoBehaviourPun
             if (isMain)
                 winner = "you";
             print(winner);
+            displayWinner.winner = winner;
             multiplayerHasStarted = false;
         }
         else
