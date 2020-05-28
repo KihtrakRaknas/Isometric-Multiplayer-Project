@@ -12,6 +12,7 @@ public class control : MonoBehaviourPun
     public bool isMain = false;
     bool multiplayerHasStarted = false;
     public string username = "Player";
+    string winner = "";
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +23,16 @@ public class control : MonoBehaviourPun
     {
         canShoot = true;
     }
-
-    // Update is called once per frame
-    private void FixedUpdate()
+    void OnGUI()
     {
+        if(winner!="")
+            GUI.Label(new Rect(Screen.height - 10, Screen.width - 40, 20, 80), winner + " wins!");
+
+    }
+        // Update is called once per frame
+        private void FixedUpdate()
+    {
+        
         Vector3 v = Camera.main.transform.position - transform.position;
         v.x = v.z = 0.0f;
         text.transform.LookAt(Camera.main.transform.position - v);
@@ -83,10 +90,9 @@ public class control : MonoBehaviourPun
         if(multiplayerHasStarted && GameObject.FindGameObjectsWithTag("playerObj").Length == 1)
         {
             NetworkManager.instance.changeRoom();
-            string winner = GameObject.FindGameObjectsWithTag("playerObj")[0].GetComponent<PhotonView>().Owner.NickName;
+            winner = GameObject.FindGameObjectsWithTag("playerObj")[0].GetComponent<PhotonView>().Owner.NickName;
             if (isMain)
                 winner = "you";
-            GUI.Label(Rect(Screen.height - 10, Screen.width - 40, 20, 80), winner+" wins!");
             multiplayerHasStarted = false;
         }
         else

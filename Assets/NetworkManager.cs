@@ -95,7 +95,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
     public void changeRoom()
     {
-        if (PhotonNetwork.IsMasterClient) {
+        Invoke("changeRoomReal", 3);
+    }
+
+    void changeRoomReal()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
             print("MASTER");
             ChangedScene("Game" + (Mathf.Floor(Random.Range(0, 4) + 1)));
         }
