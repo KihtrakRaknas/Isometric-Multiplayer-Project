@@ -115,11 +115,13 @@ public class control : MonoBehaviourPun
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "bullet")
-        {
-            isMain = false;
-            Invoke("kill", 3);
-            transform.Rotate(new Vector3(90, 0, 0));
+        if (isMain) { 
+            if (collision.gameObject.tag == "bullet")
+            {
+                isMain = false;
+                Invoke("kill", 3);
+                transform.Rotate(new Vector3(90, 0, 0));
+            }
         }
     }
     void kill()
