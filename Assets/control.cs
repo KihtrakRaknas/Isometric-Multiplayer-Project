@@ -83,6 +83,10 @@ public class control : MonoBehaviourPun
         if(multiplayerHasStarted && GameObject.FindGameObjectsWithTag("playerObj").Length == 1)
         {
             NetworkManager.instance.changeRoom();
+            string winner = GameObject.FindGameObjectsWithTag("playerObj")[0].GetComponent<PhotonView>().Owner.NickName;
+            if (isMain)
+                winner = "you";
+            GUI.Label(Rect(Screen.height - 10, Screen.width - 40, 20, 80), winner+" wins!");
             multiplayerHasStarted = false;
         }
         else

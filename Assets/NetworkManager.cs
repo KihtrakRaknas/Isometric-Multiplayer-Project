@@ -26,13 +26,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     // Start is called before the first frame update
     void OnClick_CreateRoom()
     {
-        PhotonNetwork.NickName = real_username_field.text != "" ? real_username_field.text : "Player" + Random.Range(0, 999999).ToString();
         string roomID = Username_field.text.ToString() != "" ? Username_field.text.ToString() : "forgotToTypeARoomCode";
         makeRoomWithID(roomID);
     }
 
     public void makeRoomWithID(string id)
     {
+        PhotonNetwork.NickName = real_username_field.text != "" ? real_username_field.text : "Player" + Random.Range(0, 999999).ToString();
         RoomOptions options = new RoomOptions();
         options.MaxPlayers = 4;
         print(id);
