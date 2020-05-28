@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class control : MonoBehaviour
 {
-    public GameObject projectile;
+    public GameObject text;
     float xscale = 0;
     float zscale = 0;
     bool canShoot = true;
     public bool isMain = false;
     bool multiplayerHasStarted = false;
+    public string username = "Player";
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +25,11 @@ public class control : MonoBehaviour
     // Update is called once per frame
     private void FixedUpdate()
     {
+        Vector3 v = Camera.main.transform.position - transform.position;
+        v.x = v.z = 0.0f;
+        text.transform.LookAt(Camera.main.transform.position - v);
+        text.transform.Rotate(0, 180, 0);
+        text.GetComponent<TextMesh>().text = username;
         if (transform.position.y < -100)
             kill();
         if (isMain)
