@@ -17,6 +17,7 @@ public class control : MonoBehaviourPun
     void Start()
     {
         username = GetComponent<PhotonView>().Owner.NickName;
+        displayWinner.winner = "";
     }
 
     void resetShootBool()
