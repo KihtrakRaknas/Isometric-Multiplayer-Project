@@ -22,6 +22,6 @@ public class displayWinner : MonoBehaviourPun
     void Update()
     {
         if (winner != "")
-            winText.text = winner + " wins!";
+            winText.text = winner + " won!";
     }
 }
