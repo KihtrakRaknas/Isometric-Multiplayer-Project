@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject playerPrefab;
+    bool once = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,9 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (!once && GameObject.FindGameObjectsWithTag("playerObj").Length == 0) { 
+            NetworkManager.instance.changeRoom();
+            once = true;
+        }
     }
 }

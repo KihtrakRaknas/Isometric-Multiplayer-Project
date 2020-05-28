@@ -104,11 +104,8 @@ public class control : MonoBehaviourPun
 
         if (isMain)
         {
-            var x = this.transform.position.x;
-            var y = this.transform.position.y;
-            var z = this.transform.position.z;
-            x += xscale * Time.deltaTime / 10;
-            z += zscale * Time.deltaTime / 10;
+
+            transform.Translate(new Vector3(xscale * Time.deltaTime / 10, 0, zscale * Time.deltaTime / 10);
             this.transform.position = new Vector3(x, y, z);
             Vector3 movement = new Vector3(xscale, 0.0f, zscale);
             if (movement != Vector3.zero)
